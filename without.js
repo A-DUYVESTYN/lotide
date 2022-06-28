@@ -20,7 +20,7 @@ const assertArraysEqual = function(actual, expected) {
 
 };
 
-// Function to remove out unwated items from a source array
+// Function to remove out unwated items from a source array. pseudocode:
 // loop through source array
 // check if each element is included in itemsToRemove array
 // if not included, push the current element to the output array.
