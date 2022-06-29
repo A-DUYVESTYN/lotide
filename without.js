@@ -1,8 +1,9 @@
 // function returns true if two arrays are equal
 // the result of checking each element is stored in equalArr
 const eqArrays = function(arr1, arr2) {
+  let maxLength = Math.max(arr1.length,arr2.length)
   let equalArr = [];
-  for (const i of arr1) {
+  for (let i = 0; i < maxLength; i++) {
     (arr1[i] === arr2[i]) ? equalArr[i] = true : equalArr[i] = false;
   }
   if (equalArr.includes(false)) {
