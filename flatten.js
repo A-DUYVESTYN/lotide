@@ -15,11 +15,10 @@ const eqArrays = function(arr1, arr2) {
 // tests if an actual array result is equivalent to an expected result. does not work for non-arrays
 const assertArraysEqual = function(actual, expected) {
   if (eqArrays(actual, expected)) {
-    console.log(`✅️✅️✅️Assertion passed: ${actual} === ${expected}`);
+    console.log("✅️✅️✅️Assertion passed: ",actual," === ",expected);
   } else {
-    console.log(`🚩️🚩️🚩️Assertion failed: ${actual} !== ${expected}`);
+    console.log("✅️✅️✅️Assertion passed: ",actual," === ",expected);
   }
-
 };
 
 //takes in an array containing elements including nested arrays of elements, and return a "flattened" version of the array.
