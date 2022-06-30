@@ -1,4 +1,3 @@
-
 // tests if an actual result is equivalent to an expected result
 const assertEqual = function (actual, expected) {
   if (actual === expected) {
