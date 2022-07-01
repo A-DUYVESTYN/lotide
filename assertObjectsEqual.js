@@ -1,34 +1,43 @@
-// function returns true if two arrays are equal
+// function returns true if two arrays are equal. Can handle nested arrays using recursion
 // the result of checking each element is stored in equalArr
-const eqArrays = function(arr1, arr2) {
-  let maxLength = Math.max(arr1.length,arr2.length)
-  let equalArr = [];
-  for (let i = 0; i < maxLength; i++) {
-    (arr1[i] === arr2[i]) ? equalArr[i] = true : equalArr[i] = false;
+const eqArrays = function (arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+    return false
   }
-  if (equalArr.includes(false)) {
-    return false;
-  }
-  return true;
-};
-// Returns true if both objects have identical keys with identical values.
-const eqObjects = function(object1, object2) {
+  for (let i = 0; i < arr1.length; i++) {
 
-  if (!(Object.keys(object1).length === Object.keys(object2).length)) {
+    if (Array.isArray(arr1[i]) && Array.isArray(arr2[i])) {
+      if (!eqArrays(arr1[i], arr2[i])) {
+        return false
+      }
+    } else if (arr1[i] !== arr2[i]) {
+      return false
+    }
+  }
+  return true
+};
+// Returns true if both objects have identical keys with identical values. Can handle nested objects using recursion
+const eqObjects = function (object1, object2) {
+  // check if # of keys are the same, if not return false
+  if (Object.keys(object1).length !== Object.keys(object2).length) {
     return false
   }
   for (const key of Object.keys(object1)) {
-    //checks both objects if the current key's value is an array
-    if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
-      //compare arrays and returns false if unequal
-      if (!eqArrays(object1[key],object2[key])) {
+    const val1 = object1[key]
+    const val2 = object2[key]
+    //checks both objects if the current key's value is an array. if so, compare arrays and return false if unequal
+    if (Array.isArray(val1) && Array.isArray(val2)) {
+      if (!eqArrays(val1, val2)) {
         return false
       }
-    } else {
-      // if not arrays, assume the current key's value are primatives
-      if (!(object1[key] === object2[key])) {
+      // after checking they are not arrays, check if both values are objects and not null, if so, use recursion to check if objects are equal, return false if unequal
+    } else if (typeof val1 === 'object' && val1 !== null && typeof val2 === 'object' && val2 !== null) {
+      if (!eqObjects(val1, val2)) {
         return false
       }
+      // if not objects, arrays, or null, assume the current key's values are primatives
+    } else if (val1 !== val2) {
+      return false
     }
   }
   return true

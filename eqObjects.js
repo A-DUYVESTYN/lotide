@@ -1,28 +1,30 @@
 // tests if an actual result is equivalent to an expected result
 const assertEqual = function (actual, expected) {
-  if (actual === expected) {
-    console.log(`✅️✅️✅️Assertion passed: ${actual} === ${expected}`);
-  }
-  if (actual !== expected) {
+  (actual === expected) ?
+    console.log(`✅️✅️✅️Assertion passed: ${actual} === ${expected}`) :
     console.log(`🚩️🚩️🚩️Assertion failed: ${actual} !== ${expected}`);
-  }
 };
 
-// function returns true if two arrays are equal
-// the boolean result of checking each element is stored in equalArr
+// function returns true if two arrays are equal. Can handle nested arrays using recursion
+// the result of checking each element is stored in equalArr
 const eqArrays = function (arr1, arr2) {
-  let maxLength = Math.max(arr1.length, arr2.length)
-  let equalArr = [];
-  for (let i = 0; i < maxLength; i++) {
-    (arr1[i] === arr2[i]) ? equalArr[i] = true : equalArr[i] = false;
+  if (arr1.length !== arr2.length) {
+    return false
   }
-  if (equalArr.includes(false)) {
-    return false;
+  for (let i = 0; i < arr1.length; i++) {
+
+    if (Array.isArray(arr1[i]) && Array.isArray(arr2[i])) {
+      if (!eqArrays(arr1[i], arr2[i])) {
+        return false
+      }
+    } else if (arr1[i] !== arr2[i]) {
+      return false
+    }
   }
-  return true;
+  return true
 };
 
-// Returns true if both objects have identical keys with identical values.
+// Returns true if both objects have identical keys with identical values. Can handle nested objects using recursion
 const eqObjects = function (object1, object2) {
   // check if # of keys are the same, if not return false
   if (Object.keys(object1).length !== Object.keys(object2).length) {
