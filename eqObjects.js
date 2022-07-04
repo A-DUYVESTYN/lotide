@@ -51,12 +51,15 @@ const eqObjects = function (object1, object2) {
   return true
 };
 
+module.exports = eqObjects
+
+
 // TEST CASES FOR NESTED OBJECTS
-assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true) // => true
-assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false) // => false
-assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false) // => false
-assertEqual(eqObjects({ a: { y: 0, z: { yup: { yessir: 5 }, nah: 3 } }, b: 2 }, { a: { y: 0, z: { yup: { yessir: 5 }, nah: 3 } }, b: 2 }), true) // => true
-assertEqual(eqObjects({ a: { y: { p: 54 }, z: 1 }, b: { y: 0, z: 1 } }, { a: { y: { p: 54 }, z: 1 }, b: { y: 0, z: 99 } }), false) // => false
+// assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true) // => true
+// assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false) // => false
+// assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false) // => false
+// assertEqual(eqObjects({ a: { y: 0, z: { yup: { yessir: 5 }, nah: 3 } }, b: 2 }, { a: { y: 0, z: { yup: { yessir: 5 }, nah: 3 } }, b: 2 }), true) // => true
+// assertEqual(eqObjects({ a: { y: { p: 54 }, z: 1 }, b: { y: 0, z: 1 } }, { a: { y: { p: 54 }, z: 1 }, b: { y: 0, z: 99 } }), false) // => false
 
 
 // TEST CASES FOR NON_NESTED OBJECTS
