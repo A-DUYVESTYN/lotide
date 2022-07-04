@@ -26,7 +26,7 @@
 
 const middle = function(arr) {
   const outputArr = []
-  const midIndex = Math.floor(arr.length/2); //returns the 
+  const midIndex = Math.floor(arr.length/2); 
     
   if (arr.length <= 2) { 
   }
